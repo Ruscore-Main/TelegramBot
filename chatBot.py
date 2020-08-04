@@ -26,17 +26,6 @@ def get_chat_id(message):
         dump(chats, f)
     print('чаты:  ', chats)
 
-#add
-@bot.message_handler(commands=['add'])
-@bot.edited_message_handler(commands=['add'])
-def add_chat(message):
-    #Бот обязательно должен присутсвовать в добавляемом чате
-    bot.send_message(message.chat.id, 'Бот обязательно должен присутсвовать в добавляемом чате')
-    new_chat = int(message.text[4:])
-    bot.send_message(message.chat.id, f'{new_chat} был добавлен в рассылку')
-    chats.add(new_chat)
-    with open('chats_id.data', 'wb') as f:
-        dump(chats, f)
 
 #delete
 @bot.message_handler(commands=['delete'])
